@@ -66,8 +66,8 @@ a{
 .login .group span.show ion-icon:nth-child(1){
     display: none;
 }
-.login .recovery{
-    text-align: right;
+.login .recovery p{
+    text-align: left;
     margin-bottom: 20px;
     font-size: small;
 }
