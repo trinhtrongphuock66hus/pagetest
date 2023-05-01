@@ -28,6 +28,9 @@ a{
 .login .title{
     font-size: x-large;
     font-weight: bold;
+    background-image: url("backgroundtext.jpg");
+    -webkit-background-clip: text;
+    color: transparent;
     margin-bottom: 20px;
 }
 .login .des{
