@@ -10,13 +10,14 @@ signInButton.addEventListener("click", function() {
   const password = document.getElementById("password").value;
 
   // Kiểm tra tính hợp lệ của tên đăng nhập và mật khẩu
-  console.log(`Username:trinhtrongphuoc${username}, Password: ${password}`);
+  console.log(`Username: `,username,`Password: `,password);
   if (username === "trinhtrongphuoc" && password === "phuoc03") {
     // Điều hướng sang trang web khác
     window.location.href = "https://trinhtrongphuock66hus.github.io/page/";
   } else {
     // Thông báo lỗi nếu tên đăng nhập hoặc mật khẩu không đúng
-    alert("tên đăng nhập hoặc mật khẩu không đúng");
+    console.log(`Nhập lại`);
+    alert("Tên đăng nhập hoặc mật khẩu không đúng");
   }
 });
 
