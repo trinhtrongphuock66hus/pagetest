@@ -29,6 +29,9 @@ signInButton.addEventListener("click", function() {
         alert("Tài khoản hoặc mật khẩu không đúng");
       }
     }
+    else{
+      alert("Cơ sở dữ liệu chưa hoạt động");
+    }
   };
 
   // Gửi yêu cầu HTTP GET đến địa chỉ '/users'
