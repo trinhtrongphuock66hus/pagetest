@@ -20,7 +20,6 @@ signInButton.addEventListener("click", function() {
     if (this.readyState == 4 && this.status == 200) {
       // Xử lý kết quả trả về từ máy chủ
       var data = JSON.parse(this.responseText);
-      console.log(data);
       const nguoiDung = data.find(user => user.user === username && user.pass === password);
       if (nguoiDung) {
         // Tài khoản và mật khẩu hợp lệ, chuyển hướng đến trang khác
