@@ -12,28 +12,31 @@ signInButton.addEventListener("click", function() {
   // Kiểm tra tính hợp lệ của tên đăng nhập và mật khẩu
   console.log(`Username: `,username,`Password: `,password);
   
-  // khởi tạo đối tượng XMLHttpRequest
-  var xhttp = new XMLHttpRequest();
+  // Tạo một đối tượng mới để chứa thông tin người dùng
+  var newUser = {
+    user: username,
+    pass: password,
+  };
 
-  // Xác định hành động khi nhận được phản hồi từ máy chủ
+  // Gửi yêu cầu HTTP POST đến địa chỉ '/login'
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "http://192.168.2.6/login", true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  // Gửi thông tin tài khoản và mật khẩu dưới dạng JSON
+  var data = JSON.stringify(newUser);
+  xhttp.send(data);
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       // Xử lý kết quả trả về từ máy chủ
-      var data = JSON.parse(this.responseText);
-      const nguoiDung = data.find(user => user.user === username && user.pass === password);
-      if (nguoiDung) {
-        // Tài khoản và mật khẩu hợp lệ, chuyển hướng đến trang khác
+      var responseData = JSON.parse(this.responseText);
+      if (responseData.success) {
         window.location.href = "https://trinhtrongphuock66hus.github.io/page/";
       } else {
-        // Tài khoản và mật khẩu không hợp lệ, hiển thị thông báo lỗi
-        alert("Tài khoản hoặc mật khẩu không đúng");
+        alert(responseData.message);
       }
     }
-  };
-
-  // Gửi yêu cầu HTTP GET đến địa chỉ '/users'
-  xhttp.open("GET", "http://192.168.2.6:3000/users", true);
-  xhttp.send();
+  };  
 });
 
 showPassword.onclick = function(){
